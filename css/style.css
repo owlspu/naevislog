@@ -1,0 +1,44 @@
+/* VOICE: 조용한 선박 행정 문서, 살짝 장난기
+   IDEA: 선원 승선 기록부(하선 증명서) 한 장
+   PICTURE: 별 사이를 지나는 물방울형 나이비스 실루엣 + 기록부 카드
+   COLOUR/TYPE: 깊은 우주 남청 바탕, 흰 기록지, 라이프가든 초록 + 직인 빨강 / Orbit
+   LAYOUT: 한 열. 배 → 입력 → 기록지 */
+:root{color-scheme:light dark;--bg:light-dark(#e9eef2,#070b14);--sky:light-dark(#122033,#070b14);--paper:light-dark(#ffffff,#121a26);--ink:light-dark(#141a22,#e8edf3);--mute:light-dark(#5b6776,#93a0b2);--line:light-dark(#d6dde5,#2a3546);--green:#3fae73;--stamp:#d23a3a}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Orbit",system-ui,sans-serif;overflow-x:clip}
+.hero{background:var(--sky);color:#e8edf3;padding:clamp(28px,5vw,56px) max(5vw,16px) 0;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px;text-wrap:balance;font-weight:700}
+.hero p{margin:0;color:#aab6c6;max-width:36em}
+.wrap{max-width:720px;margin:0 auto}
+.ship{display:block;width:100%;height:auto;margin-top:8px}
+.band{padding:clamp(24px,4vw,48px) max(5vw,16px)}
+form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:12px;align-items:end;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:-40px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+label{display:grid;gap:6px;font-size:14px;color:var(--mute)}
+input,select{font:inherit;font-size:16px;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:46px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+button{font:inherit;font-weight:700;min-height:46px;padding:0 20px;border-radius:10px;border:0;background:var(--green);color:#06210f;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:400}
+.err{color:var(--stamp);font-size:14px;margin:10px 2px 0;min-height:1.4em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,4vw,36px);position:relative;overflow:hidden}
+.card[hidden]{display:none}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font-size:13px;color:var(--mute);border-bottom:1px dashed var(--line);padding-bottom:12px;margin-bottom:18px}
+.role{font-size:clamp(26px,5vw,38px);font-weight:700;line-height:1.15;margin:4px 0 2px}
+.dept{color:var(--green);font-weight:400}
+.rare{display:inline-block;margin-left:8px;font-size:13px;padding:2px 8px;border-radius:99px;background:var(--stamp);color:#fff;vertical-align:middle}
+dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}
+dl div{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+dt{font-size:13px;color:var(--mute)}dd{margin:2px 0 0;font-weight:700;white-space:nowrap}
+.text{font-size:17px;line-height:1.8;margin:0}
+.stamp{position:absolute;right:18px;bottom:18px;width:92px;height:92px;border:3px solid var(--stamp);border-radius:50%;color:var(--stamp);display:grid;place-items:center;text-align:center;font-size:12px;font-weight:700;line-height:1.2;transform:rotate(-14deg);opacity:.75;pointer-events:none}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding-right:110px}
+.note{font-size:13px;color:var(--mute);margin-top:14px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card.show{animation:rise .45s ease-out}
+@media(prefers-reduced-motion:reduce){.card.show{animation:none}}
+@media(max-width:600px){form{grid-template-columns:minmax(0,1fr)}dl{grid-template-columns:minmax(0,1fr)}.acts{padding-right:0;margin-bottom:96px}}
+.born{font-size:15px;color:var(--mute);margin:0 0 6px}
+.born b{color:var(--ink)}
+.bd{border:0;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:6px;min-width:0}
+.bd legend{font-size:14px;color:var(--mute);padding:0;margin-bottom:6px}
+select{appearance:none;-webkit-appearance:none;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2393a0b2'/%3E%3C/svg%3E") no-repeat right 10px center;padding-right:26px;width:100%}
