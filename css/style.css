@@ -6,12 +6,16 @@
 :root{color-scheme:light dark;--bg:light-dark(#e9eef2,#070b14);--sky:light-dark(#122033,#070b14);--paper:light-dark(#ffffff,#121a26);--ink:light-dark(#141a22,#e8edf3);--mute:light-dark(#5b6776,#93a0b2);--line:light-dark(#d6dde5,#2a3546);--green:#3fae73;--stamp:#d23a3a}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Orbit",system-ui,sans-serif;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Orbit",system-ui,sans-serif;overflow-x:clip;word-break:keep-all}
 .hero{background:var(--sky);color:#e8edf3;padding:clamp(28px,5vw,56px) max(5vw,16px) 0;position:relative;overflow:hidden}
+.hero .wrap{text-align:center}
 .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 8px;text-wrap:balance;font-weight:700}
-.hero p{margin:0;color:#aab6c6;max-width:36em}
+.hero p{margin:0 auto;color:#aab6c6;max-width:36em;text-wrap:balance}
 .wrap{max-width:720px;margin:0 auto}
-.ship{display:block;width:100%;height:auto;margin-top:8px}
+.ship{position:relative;display:grid;place-items:center;height:clamp(250px,36vw,310px);padding-bottom:52px;margin-top:8px}
+.ship .stars{position:absolute;inset:0;width:100%;height:100%}
+/* 픽셀 아트: 120px 원본을 2배로, 뭉개지지 않게 */
+.ship img{position:relative;width:240px;height:240px;max-width:60vw;max-height:60vw;image-rendering:pixelated;image-rendering:crisp-edges}
 .band{padding:clamp(24px,4vw,48px) max(5vw,16px)}
 form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:12px;align-items:end;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:-40px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.18)}
 label{display:grid;gap:6px;font-size:14px;color:var(--mute)}
@@ -42,3 +46,4 @@ dt{font-size:13px;color:var(--mute)}dd{margin:2px 0 0;font-weight:700;white-spac
 .bd{border:0;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:6px;min-width:0}
 .bd legend{font-size:14px;color:var(--mute);padding:0;margin-bottom:6px}
 select{appearance:none;-webkit-appearance:none;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2393a0b2'/%3E%3C/svg%3E") no-repeat right 10px center;padding-right:26px;width:100%}
+.privacy{font-size:13px;color:var(--mute);margin:10px 2px 0;text-align:center}
