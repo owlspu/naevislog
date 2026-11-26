@@ -141,7 +141,7 @@ function show(res) {
   $("days").textContent = days + "일";
 
   last = `당신은 ${res.birthYear}년에 ${res.place}에서 태어났고, 이름은 ${res.newName}입니다. `
-       + `당신은 나이비스 호의 ${res.role[1]} 담당입니다. `
+       + `당신은 나이비스 호의 ${res.role[1]} 입니다. `
        + `첫 승선은 ${fmt(res.on)}이었고, 마지막 하선은 ${fmt(res.off)}이었습니다. `
        + `당신은 ${days}일간 나이비스 호에 근무했고, 하선한 이유는 ${copula(res.reason)}.`;
   $("txt").textContent = last;
