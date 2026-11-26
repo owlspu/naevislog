@@ -172,18 +172,12 @@ function show(res) {
   fillDays();
 }
 const getBd = () => ($("by").value && $("bm").value && $("bdd").value) ? `${$("by").value}-${$("bm").value}-${$("bdd").value}` : "";
-const setBd = bd => {
-  const [y, m, d] = (bd || "").split("-");
-  if (!y) return;
-  $("by").value = y; $("bm").value = m; $("by").dispatchEvent(new Event("change")); $("bdd").value = d;
-};
 
 $("f").addEventListener("submit", e => {
   e.preventDefault();
   const name = $("nm").value.trim(), bd = getBd();
   if (!name || !bd) { $("err").textContent = "이름과 생년월일을 모두 넣어 주세요."; return; }
   $("err").textContent = "";
-  try { localStorage.setItem("naevis-crew", JSON.stringify({ name, bd })); } catch (_) {}
   show(roll(name, bd));
   // 조회 버튼 누른 횟수도 따로 집계 (GoatCounter 이벤트)
   try { window.goatcounter?.count?.({ path: "naevis-crew-record-roll", title: "승선 기록 조회", event: true }); } catch (_) {}
@@ -193,10 +187,8 @@ $("copy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(last + "\n" + N.SHARE_TAG); $("cnote").textContent = "복사했어요."; }
   catch (_) { $("cnote").textContent = "복사가 막혀 있어요. 문장을 길게 눌러 직접 복사해 주세요."; }
 });
-try {
-  const s = JSON.parse(localStorage.getItem("naevis-crew") || "null");
-  if (s) { $("nm").value = s.name; setBd(s.bd); }
-} catch (_) {}
+// 입력값은 어디에도 저장하지 않음
+try { localStorage.removeItem("naevis-crew"); } catch (_) {}
 
 // 배경 별
 const r0 = rng(7);
