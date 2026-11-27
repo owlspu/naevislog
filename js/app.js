@@ -133,7 +133,7 @@ function show(res) {
   $("born").innerHTML = "";
   $("born").append(`${res.birthYear}년 ${res.place} 출생 · `, Object.assign(document.createElement("b"), { textContent: res.newName }));
   $("who").textContent = `${res.era.label} · ${res.role[0]}`;
-  $("role").textContent = res.role[1] + " 담당";
+  $("role").textContent = res.role[1] + " ";
   if (res.rare) $("role").append(Object.assign(document.createElement("span"), { className: "rare", textContent: "희귀 기록" }));
   $("on").textContent = fmt(res.on);
   $("off").textContent = fmt(res.off);
